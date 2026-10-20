@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: shreya-portfolio
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: OWNER_PASSWORD
+        value: admin
+      - key: TRUST_PROXY
+        value: 1

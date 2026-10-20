@@ -1,0 +1,10 @@
+# Dependencies
+node_modules/
+
+# Local Environment Variables (Keep your password secret!)
+.env
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db

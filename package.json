@@ -1,0 +1,16 @@
+{
+  "name": "shreya-bawankar-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portfolio website with visitor tracking dashboard",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "serve": "node server.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "pg": "^8.11.5"
+  }
+}
