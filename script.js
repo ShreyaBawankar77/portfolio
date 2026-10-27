@@ -399,15 +399,21 @@ try {
   visitorId = "v_" + Math.random().toString(36).slice(2, 10);
 }
 
-let alreadyTracked = false;
+let shouldTrackVisit = false;
 try {
-  alreadyTracked = sessionStorage.getItem("portfolio-visit-sent") === "1";
-  sessionStorage.setItem("portfolio-visit-sent", "1");
+  const lastTrackedTime = Number(sessionStorage.getItem("portfolio-visit-time") || 0);
+  const now = Date.now();
+  const hasTestParam = new URLSearchParams(window.location.search).has("test");
+  // Track on fresh session, after 60 seconds have elapsed, or when ?test=1 is used
+  if (!lastTrackedTime || (now - lastTrackedTime > 60000) || hasTestParam) {
+    shouldTrackVisit = true;
+    sessionStorage.setItem("portfolio-visit-time", String(now));
+  }
 } catch (error) {
-  // Storage may be blocked; continue gracefully.
+  shouldTrackVisit = !window.__portfolioVisitTracked;
 }
 
-if (!alreadyTracked && !window.__portfolioVisitTracked) {
+if (shouldTrackVisit && !window.__portfolioVisitTracked) {
   window.__portfolioVisitTracked = true;
 
   const urlParams = new URLSearchParams(window.location.search);

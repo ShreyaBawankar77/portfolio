@@ -6,7 +6,11 @@ services:
     buildCommand: npm install
     startCommand: node server.js
     envVars:
+      - key: OWNER_USERNAME
+        value: admin
       - key: OWNER_PASSWORD
         value: admin
       - key: TRUST_PROXY
+        value: 1
+      - key: GEO_LOOKUP
         value: 1

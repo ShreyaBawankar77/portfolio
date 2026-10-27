@@ -24,23 +24,29 @@ A responsive, modern personal portfolio website built with plain HTML, CSS, and 
 
 ## Private Owner Dashboard
 
-1. Open **`/owner`** in your browser (e.g. `http://localhost:3002/owner`).
-2. Log in with:
-   - **Username:** `owner`
+1. Open **`/owner`** in your browser (e.g. `http://localhost:3000/owner` or `http://localhost:3002/owner`).
+2. Log in with your protected credentials:
+   - **Username:** `admin` (or the username configured in `.env`).
    - **Password:** `admin` (or the password configured in `.env`).
 3. View the live visitor log:
+   - Real visitor IP addresses (with click-to-copy button)
+   - Approximate city and country location
    - Total visits and unique visitors
-   - Exact visit timestamps
+   - Exact visit timestamps in your local time
    - Visitor device & browser (e.g. iPhone, Android, Chrome on Windows)
-   - Visitor names (if they submitted their name in the "Say Hello" section on the page)
-   - Your own visits from this browser are automatically excluded so your count stays accurate.
+   - Visitor names (if submitted via "Say Hello")
+   - Owner test visits are clearly badged (`👑 You (Owner Test)`) and can be filtered.
+   - Option to export logs as CSV or clear old logs with one click.
 
 ## Configuration (.env)
 
-Edit `.env` to change your server port or dashboard password:
+Edit `.env` to customize your server port, dashboard credentials, or proxy settings:
 ```env
 PORT=3000
+OWNER_USERNAME=admin
 OWNER_PASSWORD=admin
+TRUST_PROXY=1
+GEO_LOOKUP=1
 ```
 
 ## Project Structure
